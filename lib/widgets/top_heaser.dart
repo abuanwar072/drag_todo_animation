@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 class TopHeader extends StatelessWidget {
   const TopHeader({
     super.key,
-    required this.headerMainColor,
-    required this.headerSecondaryColor,
+    required this.isExpanded,
   });
 
-  final Color headerMainColor;
-  final Color headerSecondaryColor;
+  final bool isExpanded;
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -24,7 +22,7 @@ class TopHeader extends StatelessWidget {
                   curve: Curves.linearToEaseOut,
                   duration: Duration(milliseconds: 300),
                   style: TextStyle(
-                    color: headerMainColor,
+                    color: isExpanded ? Colors.black : Colors.white,
                     fontSize: 80,
                     fontWeight: FontWeight.bold,
                   ),
@@ -41,7 +39,7 @@ class TopHeader extends StatelessWidget {
                 AnimatedDefaultTextStyle(
                   curve: Curves.linearToEaseOut,
                   style: TextStyle(
-                    color: headerSecondaryColor,
+                    color: isExpanded ? Colors.black45 : Colors.white70,
                     fontSize: 20,
                   ),
                   duration: Duration(

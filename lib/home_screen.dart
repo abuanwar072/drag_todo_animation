@@ -9,7 +9,6 @@ import 'widgets/task_summary.dart';
 import 'widgets/task_tile.dart';
 import 'widgets/top_heaser.dart';
 
-
 const minimumDragSize = 0.43;
 const maximumDragSize = 1.0;
 
@@ -23,21 +22,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   _HomeScreenState();
 
-  final GlobalKey<AnimatedListState> _listKey = GlobalKey();
-
   final DraggableScrollableController _draggableScrollableController =
       DraggableScrollableController();
 
-  var headerMainDarkColor = Colors.white;
-
-  var headerSecondaryDarkColor = Colors.white70;
-
-  var headerMainLightColor = Colors.black;
-  var headerSecondaryLightColor = Colors.black54;
-
-  double dragHandleVerticalOffset = 12;
-
-  bool shouldShowDragHandle = true;
+  double dragHandleVerticalOffset = 6;
 
   var draggableSheetSize = minimumDragSize;
 
@@ -62,18 +50,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               statusBarBrightness: Brightness.light,
             ),
           );
-
-          headerMainDarkColor = Colors.black;
-          headerSecondaryDarkColor = Colors.black54;
-          dragHandleVerticalOffset = 50;
-
-          shouldShowDragHandle = false;
-
-          if (_draggableScrollableController.size >= .95) {
-            if (!isExpanded) {
-              isExpanded = true;
-            }
-          }
+          isExpanded = true;
         });
       } else if (_draggableScrollableController.size < .85) {
         setState(() {
@@ -83,20 +60,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             ),
           );
 
-          headerMainDarkColor = Colors.white;
-          headerSecondaryDarkColor = Colors.white70;
-          dragHandleVerticalOffset = 6;
-
-          shouldShowDragHandle = true;
+          isExpanded = false;
         });
-
-        if (_draggableScrollableController.size <= minimumDragSize) {
-          setState(() {
-            if (isExpanded) {
-              isExpanded = false;
-            }
-          });
-        }
       }
     });
     super.initState();
@@ -110,11 +75,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             TweenAnimationBuilder<double>(
               tween: Tween<double>(
                 begin: 0.0,
-                end: /*(minimumDragSize * 1.2 < draggableSheetSize &&
-                        draggableSheetSize < maximumDragSize)
-                    ? 10.0
-                    : 0.0,*/
-                    draggableSheetSize > minimumDragSize * 1.5 ? 10.0 : 0.0,
+                end: draggableSheetSize > .65 ? 10.0 : 0.0,
               ),
               duration: Duration(milliseconds: 350),
               curve: Curves.linearToEaseOut,
@@ -156,25 +117,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         top: Radius.circular(30),
                       ),
                     ),
-                    child: AnimatedList(
+                    child: ListView.builder(
                       physics: BouncingScrollPhysics(),
-                      key: _listKey,
                       controller: scrollController,
-                      initialItemCount: tasks.length + 1,
-                      itemBuilder: (context, index, animation) {
+                      itemCount: tasks.length + 1,
+                      itemBuilder: (context, index) {
                         if (index == 0) {
-                          return SizeTransition(
-                            sizeFactor: animation,
-                            child: DragHandle(
-                              verticalOffset: dragHandleVerticalOffset,
-                              isVisible: shouldShowDragHandle,
-                            ),
+                          return DragHandle(
+                            isVisible: !isExpanded,
                           );
                         }
-                        return SizeTransition(
-                          sizeFactor: animation,
-                          child: tasks[index - 1],
-                        );
+                        return tasks[index - 1];
                       },
                     ),
                   ),
@@ -182,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     duration: Duration(milliseconds: 300),
                     curve: Curves.linearToEaseOut,
                     right: MediaQuery.of(context).size.width / 3,
-                    bottom: shouldShowDragHandle ? -200 : 24,
+                    bottom: isExpanded ? 24 : -200,
                     left: MediaQuery.of(context).size.width / 3,
                     child: FloatingActionButton(
                       onPressed: () {},
@@ -200,8 +153,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               ),
             ),
             TopHeader(
-              headerMainColor: headerMainDarkColor,
-              headerSecondaryColor: headerSecondaryDarkColor,
+              isExpanded: isExpanded,
             ),
           ],
         ),

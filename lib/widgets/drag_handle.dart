@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 class DragHandle extends StatelessWidget {
   const DragHandle({
     super.key,
-    required this.verticalOffset,
+  
     required this.isVisible,
   });
 
-  final double verticalOffset;
   final bool isVisible;
 
   @override
@@ -17,7 +16,7 @@ class DragHandle extends StatelessWidget {
         curve: Curves.linearToEaseOut,
         duration: Duration(milliseconds: 400),
         margin: EdgeInsets.symmetric(
-          vertical: verticalOffset,
+          vertical: isVisible ? 6 : 50,
         ),
         width: 40,
         height: 4,

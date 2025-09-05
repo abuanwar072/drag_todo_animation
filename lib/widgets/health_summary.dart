@@ -40,7 +40,6 @@ class _StatItem extends StatelessWidget {
   final Color color;
 
   const _StatItem({
-    super.key,
     required this.icon,
     required this.value,
     required this.label,
