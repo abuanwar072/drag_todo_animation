@@ -1,27 +1,17 @@
 import 'package:flutter/material.dart';
 
 class DragHandle extends StatelessWidget {
-  const DragHandle({
-    super.key,
-  
-    required this.isVisible,
-  });
-
-  final bool isVisible;
+  const DragHandle({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: AnimatedContainer(
-        curve: Curves.linearToEaseOut,
-        duration: Duration(milliseconds: 400),
-        margin: EdgeInsets.symmetric(
-          vertical: isVisible ? 6 : 50,
-        ),
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 6),
         width: 40,
         height: 4,
         decoration: BoxDecoration(
-          color: isVisible ? Colors.grey.shade400 : Colors.white,
+          color: Colors.grey.shade400,
           borderRadius: BorderRadius.circular(10),
         ),
       ),
