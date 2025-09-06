@@ -1,16 +1,35 @@
-# drag_todo_animation
+# Flutter Drag Animation - Todo Task Animated App
 
-A new Flutter project.
+## [Watch it on YouTube](https://youtu.be/L_Q5fRhwHPE)
 
-## Getting Started
+**Packages we are using:**
+- [google_fonts](https://pub.dev/packages/google_fonts)
 
-This project is a starting point for a Flutter application.
+We just created a drag sheet animation in Flutter 🎉 We just created a **drag sheet animation** in Flutter!  
 
-A few resources to get you started if this is your first Flutter project:
+At first, it looks like it would be super complicated, but honestly, it’s really easy using Flutter’s built-in animation widgets like `AnimatedContainer` and `AnimatedPositioned`.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+👉 **Watch the video** to see exactly how I built it.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## ❌ No Extras Used
+- SingleTickerProviderStateMixin  
+- AnimationController  
+- 3rd party packages  
+
+---
+
+## ✅ Widgets I Used
+- AnimatedContainer  
+- AnimatedPositioned  
+- TweenAnimationBuilder  
+- AnimatedDefaultTextStyle  
+- DraggableScrollableSheet  
+- A few other simple widgets  
+
+### Animation preview
+
+![Preview](/gif.gif)
+
+![App UI](/ui.png)
