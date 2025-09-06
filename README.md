@@ -5,7 +5,7 @@
 **Packages we are using:**
 - [google_fonts](https://pub.dev/packages/google_fonts)
 
-We just created a drag sheet animation in Flutter 🎉 We just created a **drag sheet animation** in Flutter!  
+We just created a drag sheet animation in Flutter 🎉 
 
 At first, it looks like it would be super complicated, but honestly, it’s really easy using Flutter’s built-in animation widgets like `AnimatedContainer` and `AnimatedPositioned`.
 
@@ -13,7 +13,7 @@ At first, it looks like it would be super complicated, but honestly, it’s real
 
 ---
 
-## ❌ No Extras Used
+## ❌ Not used here
 - SingleTickerProviderStateMixin  
 - AnimationController  
 - 3rd party packages  
@@ -30,6 +30,4 @@ At first, it looks like it would be super complicated, but honestly, it’s real
 
 ### Animation preview
 
-![Preview](/gif.gif)
-
-![App UI](/ui.png)
+![Preview](/preview.gif)
