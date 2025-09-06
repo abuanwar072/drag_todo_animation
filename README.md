@@ -10,7 +10,7 @@ We just created a drag sheet animation in Flutter 🎉
 
 At first, it looks like it would be super complicated, but honestly, it’s really easy using Flutter’s built-in animation widgets like `AnimatedContainer` and `AnimatedPositioned`.
 
-👉 **Watch the video** to see exactly how I built it.
+👉 **Animation Created by** Ethiel (@enthusiastDev)
 
 ### Animation preview
 
